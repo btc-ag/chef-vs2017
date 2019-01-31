@@ -51,12 +51,10 @@ end
 
 action :remove do
   source = if property_is_set?(:source)
-    new_resource.source
-  else
-    VS2017.download_url(new_resource.edition, new_resource.version)
-  end
-
-
+             new_resource.source
+           else
+             VS2017.download_url(new_resource.edition, new_resource.version)
+           end
 
   windows_package "Remove Visual Studio 2017 #{new_resource.edition} (#{new_resource.version})" do
     source source

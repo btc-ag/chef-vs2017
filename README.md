@@ -1,5 +1,7 @@
 # Visual Studio 2017 cookbook
 
+[![Build Status](https://dev.azure.com/btcag-chef/chef/_apis/build/status/btc-ag.chef-vs2017?branchName=master)](https://dev.azure.com/btcag-chef/chef/_build/latest?definitionId=6&branchName=master)
+
 This cookbook can be used to install Visual Studio 2017 and supports the editions Community, Professional and Enterprise. The installation is done by downloading and unsing the Microsoft Web-Installer of the appropriate version. 
 
 The workloads to be installed can be specified, or all workloads can be installed.
@@ -11,7 +13,7 @@ Currently supported versions:
 * 15.7
 * 15.6
 
-## Simple usage using the vs-2017::default recipe
+## Simple usage: using the vs-2017::default recipe
 
 For simple usage, you can specify the version, the edition and the workloads to be installed via attributes.
 
@@ -53,7 +55,7 @@ vs_2017 'Professional' do
   ] # installs multiple workloads and/or components. See https://docs.microsoft.com/de-de/visualstudio/install/workload-and-component-ids?view=vs-2017 for possible workloads
   all_workloads false # set this to false if you specify dedicated workloads
   include_recommended true # defauls to true. If true, the installer will automatically install all recommended packages for the choosen workloads
-  include_optional: true # Defaults to false. If true, the installer will automatically install all optional packages for the choosen workloads
+  include_optional true # Defaults to false. If true, the installer will automatically install all optional packages for the choosen workloads
   product_key 'AAAAA-BBBBB-CCCCC-DDDDDD-EEEEEE' # you can pass a product key during installation. 
 end
 ```

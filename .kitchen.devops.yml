@@ -22,6 +22,7 @@ platforms:
 
 suites:
   - name: default
+    run_list:
       - recipe[vs-2017::default]
     attributes:
       vs2017:

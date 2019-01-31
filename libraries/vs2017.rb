@@ -1,9 +1,8 @@
 include Chef::Mixin::ShellOut
 
 class VS2017
-  
   def self.vswhere(edition, property)
-    #make first character uppercase
+    # make first character uppercase
     product = edition.sub(/\S/, &:upcase)
     shell_out!("\"C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\vswhere.exe\" -all -version [15.0,16.0) -property #{property} -products Microsoft.VisualStudio.Product.#{product}", returns: [0, 1])
   end
@@ -44,7 +43,7 @@ class VS2017
         'community' => 'https://download.visualstudio.microsoft.com/download/pr/12135679/9c6995f2b181f91c891fcb80b2ea9900/vs_Community.exe',
         'professional' => 'https://download.visualstudio.microsoft.com/download/pr/12135717/203c15dc97b95ca09af2ab37e15d4320/vs_Professional.exe',
         'enterprise' => 'https://download.visualstudio.microsoft.com/download/pr/12135702/6190530128c1014deff48203735ec888/vs_Enterprise.exe',
-      }
+      },
     }
     unless urls.key?(version)
       raise "No installer present for version #{version}. Installers available for (#{urls.keys.join(',')})"
@@ -52,7 +51,7 @@ class VS2017
     unless urls[version].key?(type)
       raise "Edition '#{type}' not found for version #{version}. Possible editions: '#{urls[version].keys.join("', '")}'."
     end
-    
+
     urls[version][type]
   end
 end
