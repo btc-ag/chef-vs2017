@@ -2,7 +2,7 @@
 
 [![Build Status](https://dev.azure.com/btcag-chef/chef/_apis/build/status/btc-ag.chef-vs2017?branchName=master)](https://dev.azure.com/btcag-chef/chef/_build/latest?definitionId=6&branchName=master)
 
-This cookbook can be used to install Visual Studio 2017 and supports the editions Community, Professional and Enterprise. The installation is done by downloading and unsing the Microsoft Web-Installer of the appropriate version. 
+This cookbook can be used to install Visual Studio 2017 and supports the editions Community, Professional and Enterprise. The installation is done by downloading and using the Microsoft Web-Installer of the appropriate version. 
 
 The workloads to be installed can be specified, or all workloads can be installed.
 
@@ -28,7 +28,7 @@ default['vs2017']['workloads'] = []
 
 Then, include the `vs-2017::default` recipe.
 
-* the version can be one of the above definen supported versions.
+* the version can be one of the above defined supported versions.
 * The edition can be `community`, `professional` or `enterprise` (case sensitive)
 * By default, all workloads are installed. To finetune the workloads, set the `all_workloads` attribute to false and specify the workloads as List. More information about workloads can be found [here](https://docs.microsoft.com/de-de/visualstudio/install/workload-and-component-ids?view=vs-2017).
 * This will install vs2017, but only if no other version of this edition is already installed. 
