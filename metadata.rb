@@ -4,7 +4,7 @@ maintainer_email 'bop-infra@btc-ag.com'
 license 'MIT'
 description 'Installs/Configures Visual Studio 2017'
 long_description 'Install or Removes Visual Studio 2017'
-version '1.0.1'
+version '1.0.2'
 chef_version '>= 14.0'
 supports 'windows'
 

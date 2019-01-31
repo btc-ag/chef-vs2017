@@ -5,7 +5,7 @@ property :workloads, Array, default: []
 property :all_workloads, [true, false], default: false
 property :include_recommended, [true, false], default: true
 property :include_optional, [true, false], default: false
-property :product_key, String, sensitivy: true
+property :product_key, String, sensitive: true
 
 action :install do
   source = if property_is_set?(:source)
