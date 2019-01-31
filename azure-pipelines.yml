@@ -40,7 +40,7 @@ steps:
     tkPattern: '-c -d always'
 
 - task: GitHubRelease@0
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/masterXXX'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   displayName: 'Create Release on GitHub'
   inputs:
     gitHubConnection: claasd
@@ -51,7 +51,7 @@ steps:
     addChangeLog: false
 
 - task: chef-software.vsts-chef-tasks.vsts-chef-task-cookbook-publish-supermaket.vsts-chef-task-cookbook-publish-supermaket@1
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/masterXXX'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   displayName: 'Publish cookbook to Supermarket'
   inputs:
     chefSupermarketEndpoint: 'chef-supermarket'
