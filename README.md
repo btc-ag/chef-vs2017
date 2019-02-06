@@ -1,6 +1,8 @@
 # Visual Studio 2017 cookbook
 
 [![Build Status](https://dev.azure.com/btcag-chef/chef/_apis/build/status/btc-ag.chef-vs2017?branchName=master)](https://dev.azure.com/btcag-chef/chef/_build/latest?definitionId=6&branchName=master)
+[![Cookbook version](https://img.shields.io/cookbook/v/vs-2017.svg?style=flat)](https://supermarket.chef.io/cookbooks/vs-2017)
+
 
 This cookbook can be used to install Visual Studio 2017 and supports the editions Community, Professional and Enterprise. The installation is done by downloading and using the Microsoft Web-Installer of the appropriate version. 
 
