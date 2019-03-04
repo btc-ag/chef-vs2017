@@ -73,6 +73,42 @@ vs_2017 "Update Enterprise to 15.8" do
 end
 ```
 
+You can add workloads or components by using modify:
+* *Modify will always execute the installer, even if the added workload(s) already exist*
+* *It is currently not possible to remove workloads or components*
+
+
+```ruby
+vs_2017 "Add .NET Framework 4.7.2 Targeting pack" do
+  action :modify
+  version: '15.9'
+  edition: 'community'
+  workloads ['Microsoft.Net.Component.4.7.2.TargetingPack']
+  include_recommended true
+  include_optional true
+end
+```
+
+To bring a node, regardless of an existing older instance to a desired state, you can combine all three actions.
+* install will only run if no VS2017 instance of the target edition is installed
+* update will only run if the installed VS2017 instance of the target edition is older than the target version
+* modify will always run, but will succeed silently if nothing is to be done.
+
+```ruby
+vs_2017 'Install/Update/Modify VS2017 Community' do
+  version '15.9'
+  action [:install, :update, :modify]
+  edition 'community'
+  workloads [
+    'Microsoft.VisualStudio.Workload.ManagedDesktop',
+    'Microsoft.Net.Component.4.7.2.TargetingPack'
+  ]
+  all_workloads false
+  include_recommended true
+  include_optional true
+end
+```
+
 You can entirely remove a Instance:
 
 ```ruby
@@ -88,6 +124,7 @@ end
 
 ## Additional information
 
-* Currently, it is not possible to add/remove workloads or components of an installed edition
+* Currently, it is not possible to remove workloads or components of an installed edition
+* Modify will always run the installer with the modify command, but will succeed silently if nothing was added
 * You can install multiple editions simultaneously
 * You can have only on version of each edition installed
