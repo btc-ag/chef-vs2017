@@ -54,7 +54,7 @@ action :modify do
              new_resource.source
            else
              VS2017.download_url(new_resource.edition, new_resource.version)
-  end
+           end
 
   options = 'modify --wait --norestart --passive'
   options = "#{options} --installPath \"#{VS2017.install_path(new_resource.edition)}\""
