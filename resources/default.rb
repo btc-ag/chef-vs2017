@@ -49,6 +49,29 @@ action :update do
   end
 end
 
+action :modify do
+  source = if property_is_set?(:source)
+             new_resource.source
+           else
+             VS2017.download_url(new_resource.edition, new_resource.version)
+           end
+
+  options = 'modify --wait --norestart --passive'
+  options = "#{options} --installPath \"#{VS2017.install_path(new_resource.edition)}\""
+  options = "#{options} --add #{new_resource.workloads.join(' --add ')}" unless new_resource.workloads.empty?
+  options = "#{options} --includeRecommended" if new_resource.include_recommended
+  options = "#{options} --includeOptional" if new_resource.include_optional
+  options = "#{options} --productKey #{new_resource.product_key}" if property_is_set?(:product_key)
+
+  windows_package "Modify Visual Studio 2017 #{new_resource.edition} (#{new_resource.version})" do
+    source source
+    installer_type :custom
+    options options
+    timeout 10_800
+    returns [0, 3010]
+  end
+end
+
 action :remove do
   source = if property_is_set?(:source)
              new_resource.source
