@@ -23,6 +23,10 @@ steps:
 - task: chef-software.vsts-chef-tasks.vsts-chef-task-install-chefdk.vsts-chef-task-install-chefdk@1
   displayName: 'Install ChefDK'
 
+- script: 'chef exec --chef-license accept'
+  displayName: Accept Chef License
+  continueOnError: true
+
 - script: 'cookstyle .'
   displayName: cookstyle
   continueOnError: true
