@@ -9,6 +9,7 @@ trigger:
 
 variables:
   release.version:
+  CHEF_LICENSE: accept
 
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -22,10 +23,6 @@ steps:
 
 - task: chef-software.vsts-chef-tasks.vsts-chef-task-install-chefdk.vsts-chef-task-install-chefdk@1
   displayName: 'Install ChefDK'
-
-- script: 'chef exec chef --chef-license accept'
-  displayName: Accept Chef License
-  continueOnError: true
 
 - script: 'cookstyle .'
   displayName: cookstyle
