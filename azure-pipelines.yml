@@ -9,6 +9,7 @@ trigger:
 
 variables:
   release.version:
+  CHEF_LICENSE: accept
 
 pool:
   vmImage: 'Ubuntu-16.04'
