@@ -25,7 +25,7 @@ action :install do
     source source
     installer_type :custom
     options options
-    timeout 10_800
+    timeout 10800
     returns [0, 3010]
     not_if { VS2017.installed?(new_resource.edition) }
   end
@@ -43,7 +43,7 @@ action :update do
     source source
     installer_type :custom
     options 'update --wait --norestart --passive'
-    timeout 10_800
+    timeout 10800
     returns [0, 3010]
     only_if { VS2017.installed?(new_resource.edition) && (VS2017.installed_version(new_resource.edition) < new_resource.version.to_f) }
   end
@@ -67,7 +67,7 @@ action :modify do
     source source
     installer_type :custom
     options options
-    timeout 10_800
+    timeout 10800
     returns [0, 3010]
   end
 end
